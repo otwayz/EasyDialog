@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             easyDialog = Builder(this).setContentViewId(R.layout.dialog_ugc_finish_read)
                     .setWidth(-2)
                     .setHeight(EasyDialog.WRAP_CONTENT)
+                    .setDimAmount(0.8f)
                     .setBackgroundColor(Color.CYAN)
                     .setOnClickListener(R.id.id_iv_close, this)
                     .setOnClickListener(R.id.id_btn_checkin, this)

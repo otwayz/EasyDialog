@@ -58,6 +58,11 @@ public class EasyDialog implements DialogInterface.OnDismissListener {
 	private void initParams(@NonNull Builder builder) {
 		Window window = mAlertDialog.getWindow();
 		if (window != null) {
+			if (builder.amount >= 0) {
+				window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+				window.setDimAmount(builder.amount);
+			}
+
 			window.setBackgroundDrawable(new ColorDrawable(builder.bgColor));
 			WindowManager.LayoutParams params = window.getAttributes();
 			if ((builder.viewWidth > 0 && builder.viewWidth < 1) ||
@@ -154,6 +159,7 @@ public class EasyDialog implements DialogInterface.OnDismissListener {
 		private int viewGravity;
 		private boolean cancelable;
 		private boolean cancelOutside;
+		private float amount = -1.0f;
 
 		public Builder(@NonNull Context ct) {
 			context = ct;
@@ -163,6 +169,7 @@ public class EasyDialog implements DialogInterface.OnDismissListener {
 			viewGravity = Gravity.CENTER;
 			cancelable = true;
 			cancelOutside = true;
+			amount = -1.0f;
 		}
 
 		/**
@@ -243,6 +250,12 @@ public class EasyDialog implements DialogInterface.OnDismissListener {
 
 		public Builder setOnCheckedChangeListener(@IdRes int viewId, CompoundButton.OnCheckedChangeListener listener) {
 			checkedChangeListenerMap.put(viewId, listener);
+			return this;
+		}
+
+		// amount  0 ~ 1
+		public Builder setDimAmount(float amount) {
+			this.amount = amount;
 			return this;
 		}
 
