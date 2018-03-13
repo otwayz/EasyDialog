@@ -237,17 +237,17 @@ public class EasyDialog implements DialogInterface.OnDismissListener {
 		}
 
 		public Builder setOnClickListener(@IdRes int viewId, View.OnClickListener listener) {
-			clickListenerMap.append(viewId, listener);
+			clickListenerMap.put(viewId, listener);
 			return this;
 		}
 
 		public Builder setOnCheckedChangeListener(@IdRes int viewId, CompoundButton.OnCheckedChangeListener listener) {
-			checkedChangeListenerMap.append(viewId, listener);
+			checkedChangeListenerMap.put(viewId, listener);
 			return this;
 		}
 
 		public Builder setOnLongClickListener(@IdRes int viewId, View.OnLongClickListener listener) {
-			longClickListenerMap.append(viewId, listener);
+			longClickListenerMap.put(viewId, listener);
 			return this;
 		}
 
