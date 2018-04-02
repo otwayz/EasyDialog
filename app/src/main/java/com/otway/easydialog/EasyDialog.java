@@ -144,9 +144,18 @@ public class EasyDialog implements DialogInterface.OnDismissListener {
 		checkedChangeListenerMap.clear();
 	}
 
+	public void setOnClickListener(@IdRes int viewId, View.OnClickListener listener){
+		View view = mBuilder.contentView.findViewById(viewId);
+		if (view != null){
+			view.setOnClickListener(listener);
+		}
+	}
+
 	@Override
 	public void onDismiss(DialogInterface dialog) {
-		Log.d(TAG, "onDismiss: --------dialog:" + dialog);
+		if (mCallback != null){
+			mCallback.onDismiss();
+		}
 	}
 
 	public static class Builder {
@@ -273,5 +282,15 @@ public class EasyDialog implements DialogInterface.OnDismissListener {
 			centerWrapDialog.show();
 			return centerWrapDialog;
 		}
+	}
+
+	private Callback mCallback;
+
+	public void setCallback(Callback callback) {
+		this.mCallback = callback;
+	}
+
+	public interface Callback{
+		void onDismiss();
 	}
 }
