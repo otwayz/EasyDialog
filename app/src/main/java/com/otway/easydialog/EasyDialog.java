@@ -12,7 +12,6 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.StyleRes;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -144,16 +143,16 @@ public class EasyDialog implements DialogInterface.OnDismissListener {
 		checkedChangeListenerMap.clear();
 	}
 
-	public void setOnClickListener(@IdRes int viewId, View.OnClickListener listener){
+	public void setOnClickListener(@IdRes int viewId, View.OnClickListener listener) {
 		View view = mBuilder.contentView.findViewById(viewId);
-		if (view != null){
+		if (view != null) {
 			view.setOnClickListener(listener);
 		}
 	}
 
 	@Override
 	public void onDismiss(DialogInterface dialog) {
-		if (mCallback != null){
+		if (mCallback != null) {
 			mCallback.onDismiss();
 		}
 	}
@@ -290,7 +289,7 @@ public class EasyDialog implements DialogInterface.OnDismissListener {
 		this.mCallback = callback;
 	}
 
-	public interface Callback{
+	public interface Callback {
 		void onDismiss();
 	}
 }
