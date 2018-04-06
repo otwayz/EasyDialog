@@ -9,13 +9,14 @@ you can use like
 
 
 ```
-    easyDialog = Builder(this).setContentViewId(R.layout.dialog_ugc_finish_read)
+    easyDialog = new EasyDialog.Builder()
+                    .setContentViewId(R.layout.dialog_ugc_finish_read)
                     .setWidth(-2)
                     .setHeight(EasyDialog.WRAP_CONTENT)
                     .setBackgroundColor(Color.CYAN)
                     .setOnClickListener(R.id.id_iv_close, this)
                     .setOnClickListener(R.id.id_btn_checkin, this)
-                    .show()
+                    .show(this)
 ```
 
 support click , long click and check event.
